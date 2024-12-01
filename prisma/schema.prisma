@@ -12,3 +12,18 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Movie {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String   @unique
+  created_at DateTime @default(now())
+  Cast       Cast[]
+}
+
+model Cast {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  movieID     String @db.ObjectId
+  movie       Movie  @relation(fields: [movieID], references: [id])
+}
