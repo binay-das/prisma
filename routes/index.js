@@ -3,6 +3,6 @@ const router = express.Router();
 
 const movieRoutes = require('./movieRoutes');
 
-router.use('/api/moive', movieRoutes);
+router.use('/api/movies', movieRoutes);
 
-export default router;
+module.exports = router;

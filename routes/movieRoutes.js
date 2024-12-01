@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-import { newMovie } from '../controllers/movieController';
+const { index, newMovie } = require('../controllers/movieController');
 
-router.route('/').post(newMovie);
+router.route('/').get(index).post(newMovie);
 
-export default router;
+module.exports = router;
